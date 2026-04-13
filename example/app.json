@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "sightline-example",
+    "slug": "sightline-example",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "sightline-example",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.example.sightline"
+    },
+    "android": {
+      "package": "com.example.sightline"
+    },
+    "plugins": [
+      "expo-asset"
+    ]
+  }
+}
