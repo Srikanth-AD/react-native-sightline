@@ -1,0 +1,52 @@
+{
+  "name": "react-native-sightline",
+  "version": "0.1.0",
+  "description": "Clear line of sight into your React Native app's performance. Zero-config floating dev overlay.",
+  "main": "src/index.tsx",
+  "types": "src/index.tsx",
+  "license": "MIT",
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/react-native-sightline"
+  },
+  "keywords": [
+    "react-native",
+    "performance",
+    "fps",
+    "memory",
+    "devtools",
+    "overlay",
+    "debug",
+    "profiling",
+    "flipper-alternative",
+    "jank"
+  ],
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-native": ">=0.73.0"
+  },
+  "dependencies": {
+    "zustand": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/react": "^19.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.0.0",
+    "eslint-plugin-react": "^7.0.0",
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "jest": "^29.0.0",
+    "prettier": "^3.0.0",
+    "ts-jest": "^29.0.0",
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "test": "jest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/ __tests__/ --ext .ts,.tsx",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\" \"__tests__/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\" \"__tests__/**/*.ts\""
+  }
+}
