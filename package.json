@@ -5,11 +5,20 @@
   "main": "src/index.tsx",
   "types": "src/index.tsx",
   "license": "MIT",
-  "author": "",
+  "author": "Srikanth-AD",
+  "homepage": "https://github.com/Srikanth-AD/react-native-sightline#readme",
+  "bugs": {
+    "url": "https://github.com/Srikanth-AD/react-native-sightline/issues"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/YOUR_USERNAME/react-native-sightline"
+    "url": "git+https://github.com/Srikanth-AD/react-native-sightline.git"
   },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
   "keywords": [
     "react-native",
     "performance",
@@ -47,6 +56,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint src/ __tests__/ --ext .ts,.tsx",
     "format": "prettier --write \"src/**/*.{ts,tsx}\" \"__tests__/**/*.ts\"",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx}\" \"__tests__/**/*.ts\""
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\" \"__tests__/**/*.ts\"",
+    "prepublishOnly": "npm test && npm run lint && npm run typecheck"
   }
 }
