@@ -3,7 +3,7 @@
 A floating performance overlay for React Native. See your app's FPS, memory, re-renders, and network activity in real time, right on screen.
 
 [![npm version](https://img.shields.io/npm/v/react-native-sightline.svg)](https://www.npmjs.com/package/react-native-sightline)
-[![license](https://img.shields.io/npm/l/react-native-sightline.svg)](https://github.com/YOUR_USERNAME/react-native-sightline/blob/main/LICENSE)
+[![license](https://img.shields.io/npm/l/react-native-sightline.svg)](https://github.com/Srikanth-AD/react-native-sightline/blob/main/LICENSE)
 ![platform](https://img.shields.io/badge/platform-ios%20%7C%20android-lightgrey)
 ![rn](https://img.shields.io/badge/react%20native-0.73%2B-blue)
 ![expo](https://img.shields.io/badge/expo-compatible-4630EB)
