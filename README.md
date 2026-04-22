@@ -175,6 +175,18 @@ Sightline wraps `global.fetch` and `XMLHttpRequest.prototype.send` to count in-f
 
 ---
 
+## Tradeoffs & accuracy
+
+Sightline measures JS FPS using `requestAnimationFrame`, which runs on the JS thread. This means the measurement itself competes for the same thread it's measuring. When FPS drops to 30, Sightline will show ~30 — but the numbers aren't precise to the millisecond.
+
+UI FPS is approximated via `Animated` native driver timing drift. It's directionally useful but not exact. The overlay itself re-renders every 500ms to update the display. That's minimal, but it's not zero.
+
+This is an intentional tradeoff. Sightline prioritizes zero setup (no native modules, no pod install, works with Expo) over measurement precision. It's a development tool for catching problems, not a benchmarking tool for measuring exact frame times.
+
+**If you need precise frame timing**, use a native solution like [react-native-performance-toolkit](https://github.com/Nodonisko/react-native-performance-toolkit), which measures from the native side with near-zero JS overhead. Sightline and native toolkits complement each other — Sightline gives you a quick at-a-glance overlay with re-render and network tracking, native tools give you accurate frame data.
+
+---
+
 ## Compatibility
 
 | React Native | Hermes | New Architecture | Expo |
@@ -208,13 +220,16 @@ No. It renders nothing when `__DEV__` is false.
 No. Pure TypeScript. No pod install, no gradle.
 
 **Does the overlay affect what it's measuring?**
-Minimally. Updates are batched every 500ms, not per-frame. All components are memoized.
+Yes, slightly. The FPS measurement runs on the JS thread via requestAnimationFrame, so it competes with your app's workload. The overlay re-renders every 500ms. In practice the overhead is small (all components are memoized, updates are batched), but it's not zero. For precise frame timing, use a native profiling tool.
 
 **Will it conflict with Sentry/DataDog/etc.?**
 No. It chains through existing fetch patches and restores everything on unmount.
 
 **Why is UI FPS approximate?**
-Real UI thread FPS requires a native module. Sightline approximates it. It's good enough to tell you when something's wrong.
+Real UI thread FPS requires a native module. Sightline approximates it using Animated native driver timing drift. It'll tell you when something's wrong, but the exact number may be off.
+
+**How is this different from native profiling tools?**
+Sightline is a quick, no-setup overlay for development. It trades measurement precision for zero configuration — no native modules, works with Expo. Native tools like [react-native-performance-toolkit](https://github.com/Nodonisko/react-native-performance-toolkit) give more accurate frame data with less overhead on the JS thread. Use both: Sightline for everyday development, native tools when you need exact numbers.
 
 ---
 
