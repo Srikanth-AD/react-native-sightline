@@ -60,3 +60,33 @@ describe('formatNative', () => {
     expect(formatNative(0)).toBe('0/s');
   });
 });
+
+describe('formatter edge cases', () => {
+  it('formatFps handles values above 60', () => {
+    expect(formatFps(120)).toBe('120 fps');
+    expect(formatFps(144.4)).toBe('144 fps');
+  });
+
+  it('formatFps handles negative values without crashing', () => {
+    expect(formatFps(-1)).toBe('-1 fps');
+  });
+
+  it('formatMemory handles values over 1 GB', () => {
+    expect(formatMemory(1024)).toBe('1024.0 mb');
+    expect(formatMemory(2048.55)).toMatch(/^2048\.[56] mb$/);
+  });
+
+  it('formatMemory rounds half-up at the tenths place', () => {
+    expect(formatMemory(99.95)).toBe('100.0 mb');
+  });
+
+  it('formatRerenders handles fractional rates', () => {
+    expect(formatRerenders(0.4)).toBe('0/s');
+    expect(formatRerenders(0.5)).toBe('1/s');
+  });
+
+  it('formatNetwork never returns negative request counts visibly broken', () => {
+    expect(formatNetwork(0.49)).toBe('0 req');
+    expect(formatNetwork(0.5)).toBe('1 req');
+  });
+});
